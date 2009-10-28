@@ -1,6 +1,6 @@
 = zfs-mysql-backup
 
-Description goes here.
+Just a small script I wrote to backup mysql via ZFS snapshots and optionally send those snapshots to S3. See the code for details.
 
 == Note on Patches/Pull Requests
  
