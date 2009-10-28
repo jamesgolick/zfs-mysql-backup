@@ -84,7 +84,7 @@ class ZfsMysqlBackup < Thor
     end
 
     def s3_object_name
-      hostname = `hostname`
+      hostname = `hostname`.strip
       "mysqlbackups/#{hostname}.#{date}.gz"
     end
 
