@@ -70,7 +70,7 @@ class ZfsMysqlBackup < Thor
     end
 
     def push_to_s3
-      logger.info("[MySQL Backup] Pushing to S3 at #{path_to_backup} in #{@s3_bucket}.")
+      logger.info("[MySQL Backup] Pushing to S3 at #{s3_object_name} in #{@s3_bucket}.")
       begin
         AWS::S3::Base.establish_connection! :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
                                             :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
@@ -85,7 +85,7 @@ class ZfsMysqlBackup < Thor
 
     def s3_object_name
       hostname = `hostname`
-      "mysqlbackups/#{hostname}-#{date}.gz"
+      "mysqlbackups/#{hostname}.#{date}.gz"
     end
 
     def success?
